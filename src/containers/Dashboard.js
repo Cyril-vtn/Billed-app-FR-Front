@@ -145,9 +145,16 @@ export default class {
       this.counter ++
     }
 
-    bills.forEach(bill => {
-      $(`#open-bill${bill.id}`).click((e) => this.handleEditTicket(e, bill, bills))
-    })
+
+  // For each bill filtered by the current status (obtained by getStatus(this.index)),
+  // we attach a 'click' event handler to the corresponding element in the DOM (identified by `#open-bill${bill.id}`).
+  // This event handler calls the `handleEditTicket` method with the event, the bill, and the full list of bills as arguments.
+  // This allows the selected bill to be opened for editing.
+  // This process is repeated each time the bill list is updated, 
+  // ensuring that each displayed bill has a properly attached 'click' event handler.
+  filteredBills(bills, getStatus(this.index)).forEach(bill => {
+    $(`#open-bill${bill.id}`).click((e) => this.handleEditTicket(e, bill, bills))
+  })
 
     return bills
 
