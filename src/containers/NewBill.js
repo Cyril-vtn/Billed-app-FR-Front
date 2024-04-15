@@ -24,7 +24,7 @@ export default class NewBill {
     // Check if file extension is jpg, jpeg or png
     const fileExtension = fileName.split('.').pop().toLowerCase()
     if (!['jpg', 'jpeg', 'png'].includes(fileExtension)) {
-      console.error('Invalid file type. Only jpg, jpeg, and png files are allowed.')
+      alert('Format du fichier invalide, veuillez choisir un format de type : png, jpg ou jpeg')
       this.document.querySelector(`input[data-testid="file"]`).value = '';
       return
     }
